@@ -1,0 +1,22 @@
+#check list
+-Complete the map production
+
+-Player Input
+
+-Enable players to move
+
+-Enable players to exit
+
+-Add more function and conversations
+
+-Add items to the map
+
+-Add NPCs in the map
+
+-Add attributes to items and increase health for NPCs
+
+-Enable players to pick up items and engage in battles
+
+-Add a second map
+
+-Enable players to teleport

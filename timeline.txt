@@ -1,0 +1,14 @@
+#Time line
+
+22~31 May, 2023:
+-Complete the basic production of the game, such as walking or maps.
+
+1~10 June, 2023:
+-Add more features, such as teleportation, adding a second map, more 
+weapons, and NPCs. Optimize the game.
+
+10~15 June, 2023:
+-Complete Alpha Test.
+
+15~20 June, 2023:
+-Complete Beta Test.
