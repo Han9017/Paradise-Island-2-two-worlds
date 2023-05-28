@@ -13,7 +13,7 @@ nice-to-have list:
 -Treasure chests everywhere on the map
 -Monetary mechanism (can be traded with NPCs)
 -archive function 
--nfinite map
+-infinite map
 
 similar programs:
 My last program, (An adventure game where players need to collect weapons from various locations on the map to defeat enemies.), similar gameplay.
