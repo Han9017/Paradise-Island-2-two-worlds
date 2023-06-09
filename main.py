@@ -1,156 +1,154 @@
-#this is a nested dictionary that contains all the place and descriptions
-place = [
-  "Swamp", "pond", "forest", "grassland", "ruins", "garbage dump",
-  "charred orphanage", "abandoned town", "stone forest", "decayed place",
-  "old site of observatory", "unmanned RV campsite", "cemetery", "zoo",
-  "unmanned area", "wheat field", "Pigman house", "cave", "demon garden",
-  "magma river", "blood lake", "headless queen statue", "fishman house",
-  "tentacle land", "twisted statue", "Dragon Den", "eerie crack",
-  "upside down cross", "odd Skeleton", "altar", "waterless river",
-  "flower free grassland"
-]
-places = {
-  place[0]: {
-    "Description": "Everything here looks so bad."
-  },
-  place[1]: {
-    "Description": "Ophelia? Are you down there?"
-  },
-  place[2]: {
-    "Description": "Full of a natural aura."
-  },
-  place[3]: {
-    "Description": "I have seen beautiful storms here before."
-  },
-  place[4]: {
-    "Description": "I can imagine the glory here used to be."
-  },
-  place[5]: {
-    "Description": "Can we get out of here quickly?"
-  },
-  place[6]: {
-    "Description": "Perhaps this is the expected outcome."
-  },
-  place[7]: {
-    "Description":
-    "Do you still have a supermarket here? I want to buy some supplies."
-  },
-  place[8]: {
-    "Description": "I don't really like this place"
-  },
-  place[9]: {
-    "Description": "Hope and light have been away from here for a long time."
-  },
-  place[10]: {
-    "Description": "No one left, even the stars are not permanent."
-  },
-  place[11]: {
-    "Description": "Can I drive them away for free?"
-  },
-  place[12]: {
-    "Description": "Some day, I will join you guys."
-  },
-  place[13]: {
-    "Description": "Do you see an elephant sitting on the ground?"
-  },
-  place[14]: {
-    "Description": "I can feel a dangerous aura"
-  },
-  place[15]: {
-    "Description": "I can stay here forever."
-  },
-  place[16]: {
-    "Description": "I hate the guys who live inside."
-  },
-  place[17]: {
-    "Description": "It's so dark inside."
-  },
-  place[18]: {
-    "Description": "Why do those flowers have eyes on them?"
-  },
-  place[19]: {
-    "Description": "I don't want to swim there."
-  },
-  place[20]: {
-    "Description": "Fresh blood is boiling inside."
-  },
-  place[21]: {
-    "Description": "Its beauty is twinged with a heartbreaking sadness."
-  },
-  place[22]: {
-    "Description": "The guy live inside is very smelly and fishy."
-  },
-  place[23]: {
-    "Description": "Why do tentacles protrude from the ground?"
-  },
-  place[24]: {
-    "Description": "A tortured soul."
-  },
-  place[25]: {
-    "Description": "Cruel hearts dwell within."
-  },
-  place[26]: {
-    "Description": "Purple light spewed out from it."
-  },
-  place[27]: {
-    "Description": "No, it shouldn't be done that way."
-  },
-  place[28]: {
-    "Description": "What horrors have we resurrected here today?"
-  },
-  place[29]: {
-    "Description": "The smell of blood drifted in the air."
-  },
-  place[30]: {
-    "Description": "bad omen."
-  },
-  place[31]: {
-    "Description": "It shouldn't be like this."
-  },
-}
+#-----------------------------------------------------------------------------
+#    File name:Paradise Island 2, two worlds
+#    Author: Han Wang
+#    Date created: 5/25/2023
+#    Date last modified: 6/6/2023
+#    version 1
+#-----------------------------------------------------------------------------
+'''   Description: Adventure Games'''
+#-----------------------------------------------------------------------------
 
-#map------------------------------------------------------------------
-map = [[[place[0], place[1], place[2], place[3]],
-        [place[4], place[5], place[6], place[7]],
-        [place[8], place[9], place[10], place[11]],
-        [place[12], place[13], place[14], place[15]]],
-       [[place[16], place[17], place[18], place[19]],
-        [place[20], place[21], place[22], place[23]],
-        [place[24], place[25], place[26], place[27]],
-        [place[28], place[29], place[30], place[31]]]]
+from map import * 
+from item import *
+from player import *
 
-start_point = [0, 0, 0]
+playing = True
 
-
-class player:
-
-  def __init__(self, z, x, y):
-    self.z = z
-    self.x = x
-    self.y = y
-
-
-player = player(0, 0, 0)
-
-print(map[player.z][player.x][player.y])
-
-for place in places:
-  if place == map[player.z][player.x][player.y]:
-    print(places[place]["Description"])
+def mainMenu():
+  global playing
+  orientating = playing
+  while orientating:
+    orientating = False
     
-waychoice = input("Choice: ").lower()
+    print("Player, choose what you want to do!")
+    Choose = ["walk", "look"]
+    for do in Choose:
+      print((f"- {do.title()}"))
+    userInput = input("You choice: ").lower()
+    
+    if userInput == Choose[0]:
+      print("You have multiple roads in front of you.")
+      walkto()
+    
+    elif userInput == Choose[1]:
+      print("You look around.")
+      printLocation()
+      InspectAction(objects)
+      backpack = ""
+      for item in player.inventory:
+        backpack = backpack + item.name + ", "
+      print("backpack:" + backpack)
+    
+    elif userInput == "quit":
+      playing = False
+      
+    else:
+      print("Invalid input!")
+      orientating = True
 
-if waychoice == "up":
-    player.x = player.x + 1 
-     
-elif waychoice == "down":
-    player.y = player.y + 1
 
-else:
-    print("Sorry you can not move to there.")
-    waychoice = True 
+def printLocation():
+  global map, player
+  print()
+  print("You are currently at: " + map.detail[player.z][player.x][player.y])
+  print("Location: [" + str(player.z) + "][" + str(player.x) + 
+        "][" + str(player.y) + "]")
+  for place in places:
+    if place == map.detail[player.z][player.x][player.y]:
+      print(places[place]["Description"])
+  print()
 
-print(map[player.z][player.x][player.y])
-for place in places:
-  if place == map[player.z][player.x][player.y]:
-    print(places[place]["Description"])
+
+def walkto():
+  global playing, map, player
+  orientating = playing
+  while orientating:
+    canUp = False
+    canDown = False
+    canRight = False
+    canLeft = False
+  
+    if player.x > 0:
+      canUp = True
+      print("you can go up - type:'up'")
+  
+    if player.x < map.max_x:
+      canDown = True
+      print("you can go down - type:'down'")
+  
+    if player.y < map.max_y:
+      canRight = True
+      print("you can go right - type:'right'")
+  
+    if player.y > 0:
+      canLeft = True
+      print("you can go left - type:'left'")
+
+    orientating = False  
+    waypoint = input("choose your direction:")
+      
+    if waypoint == "down" and canDown:
+      player.x = player.x + 1
+    
+    elif waypoint == "up" and canUp:
+      player.x = player.x - 1
+    
+    elif waypoint == "left" and canLeft:
+      player.y = player.y - 1
+    
+    elif waypoint == "right" and canRight:
+      player.y = player.y + 1
+  
+    elif waypoint == "quit":
+      playing = False
+    
+    else:
+      print("Sorry you can not move to there.")
+      orientating = True 
+  if player.z == 0 and player.x == 3 and player.y == 3:
+    printLocation()
+    print("You got teleported!")
+    player.z = 1
+    player.x = 0
+    player.y = 0
+
+map = map(map_d, 1, 3, 3)
+player = player(0, 0, 0,[])
+
+file = open("story.txt", "r")
+print(file.read())
+file.close()
+print()
+
+  
+def InspectAction(objects):
+  global playing, map, player
+  for object in objects:
+    object_z = objects[object]["Location"][0]
+    object_x = objects[object]["Location"][1]
+    object_y = objects[object]["Location"][2]
+    object_status = objects[object]["status"]
+    if (object_z == player.z and object_x == player.x and 
+        object_y == player.y and object_status):
+      print(f"{objects[object]['Description']}")
+      Choose = objects[object]["Action"]
+      for do in Choose:
+        print((f"- {do.title()}"))
+      userInput = input("You choice: ").lower()
+      if userInput == Choose[0]:
+        
+        if Choose[0] == "take":
+          currentItem = objects[object]["armor"]
+          print(f"{objects[object]['Take']}")
+          player.inventory.append(currentItem)
+          加call
+          objects[object]["status"] = False
+
+      else:
+        print("Invalid input!")
+        
+
+while playing:   
+  mainMenu()
+  
+      

@@ -1,12 +1,14 @@
 #this is a nested dictionary that contains all the place and descriptions
-place = ["Swamp", "pond", "forest", "grassland", "ruins", "garbage dump", 
-         "charred orphanage", "abandoned town", "stone forest", 
-         "decayed place", "old site of observatory", "unmanned RV campsite",
-         "cemetery", "zoo", "unmanned area", "wheat field", "Pigman house", 
-         "cave", "demon garden", "magma river", "blood lake", 
-         "headless queen statue", "fishman house", "tentacle land", 
-         "twisted statue", "Dragon Den", "eerie crack", "upside down cross", 
-         "odd Skeleton", "altar", "waterless river", "flower free grassland"]
+place = [
+  "Swamp", "pond", "forest", "grassland", "ruins", "garbage dump",
+  "charred orphanage", "abandoned town", "stone forest", "decayed place",
+  "old site of observatory", "unmanned RV campsite", "cemetery", "zoo",
+  "unmanned area", "wheat field", "Pigman house", "cave", "demon garden",
+  "magma river", "blood lake", "headless queen statue", "fishman house",
+  "tentacle land", "twisted statue", "Dragon Den", "eerie crack",
+  "upside down cross", "odd Skeleton", "altar", "waterless river",
+  "flower free grassland"
+]
 places = {
   place[0]: {
     "Description": "Everything here looks so bad."
@@ -30,7 +32,8 @@ places = {
     "Description": "Perhaps this is the expected outcome."
   },
   place[7]: {
-    "Description": "Do you still have a supermarket here? I want to buy some supplies."
+    "Description":
+    "Here still have a supermarket? I want to buy some supplies."
   },
   place[8]: {
     "Description": "I don't really like this place"
@@ -107,29 +110,18 @@ places = {
 }
 
 #map------------------------------------------------------------------
-map = [[[place[0], place[1], place[2], place[3]],
-       [place[4], place[5], place[6], place[7]],
-       [place[8], place[9], place[10], place[11]],
-       [place[12], place[13], place[14], place[15]]],
+map_d = [[[place[0], place[1], place[2], place[3]],
+        [place[4], place[5], place[6], place[7]],
+        [place[8], place[9], place[10], place[11]],
+        [place[12], place[13], place[14], place[15]]],
        [[place[16], place[17], place[18], place[19]],
-       [place[20], place[21], place[22], place[23]],
-       [place[24], place[25], place[26], place[27]],
-       [place[28], place[29], place[30], place[31]]]]
+        [place[20], place[21], place[22], place[23]],
+        [place[24], place[25], place[26], place[27]],
+        [place[28], place[29], place[30], place[31]]]]
 
-start_point = [0, 0, 0]
-
-class player:
-  def __init__(self, z, x, y):
-    self.z = z
-    self.x = x
-    self.y = y
-
-player = player(0, 0, 0)
-
-print(map[player.z][player.x][player.y]["Description"])
-
-
-
-         
-         
-
+class map:
+ def __init__(self, detail, max_z, max_x, max_y):
+    self.detail = detail
+    self.max_z = max_z
+    self.max_x = max_x
+    self.max_y = max_y
