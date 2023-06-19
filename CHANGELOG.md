@@ -30,7 +30,8 @@ All notable changes to this project will be documented in this file.
 ## [1.1.4] - 2023-06-10
 
 ### changed
--Fixed some bugs
+-Fixed the bug of not being able to pick up items
+-Changed the damage and armor values of some weapons and npc's.
 
 ### Added
 -more npcs
@@ -40,3 +41,11 @@ All notable changes to this project will be documented in this file.
 -Weapons that can be discarded at any time.
 -comment
 -Alpha and Beta Testing
+
+## [1.1.4] - 2023-06-19
+
+### changed
+-Fixed the bug that summoning bosses will cause the game to crash
+
+### Added
+-Alpha and beta testing

@@ -1,2 +1,5 @@
 Alpha test
 -The code as a whole runs smoothly, and a total of five tests were conducted without finding any bugs.
+
+Beta test
+-The first beta test, the game can run normally and smoothly, no bugs were found.
