@@ -109,7 +109,7 @@ places = {
   },
 }
 
-#map------------------------------------------------------------------
+# games map made with an array
 map_d = [[[place[0], place[1], place[2], place[3]],
         [place[4], place[5], place[6], place[7]],
         [place[8], place[9], place[10], place[11]],
@@ -118,6 +118,9 @@ map_d = [[[place[0], place[1], place[2], place[3]],
         [place[20], place[21], place[22], place[23]],
         [place[24], place[25], place[26], place[27]],
         [place[28], place[29], place[30], place[31]]]]
+
+# where boss is
+boss_point = [1, 3, 3]
 
 class map:
  def __init__(self, detail, max_z, max_x, max_y):
